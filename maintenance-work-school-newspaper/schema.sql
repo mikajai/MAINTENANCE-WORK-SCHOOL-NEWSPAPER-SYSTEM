@@ -15,7 +15,7 @@ CREATE TABLE articles (
     author_id INT NOT NULL,
     is_active TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (author_id) REFERENCES school_publication_users(user_id) ON DELETE CASCADE
+    FOREIGN KEY (author_id) REFERENCES school_publication_users(user_id)
 );
 
 
@@ -28,7 +28,8 @@ CREATE TABLE notification (
     message TEXT, 
     is_read TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sender_id) REFERENCES school_publication_users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (receiver_id) REFERENCES school_publication_users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (article_id) REFERENCES articles(article_id) ON DELETE SET NULL
+    FOREIGN KEY (sender_id) REFERENCES school_publication_users(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES school_publication_users(user_id),
+    FOREIGN KEY (article_id) REFERENCES articles(article_id)
+
 );
